@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>VK Basic Authentication</title>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Welcome to Vignesh Kanna's Basic Authentication tutorial</h1>
+      <h2>We use basic email and password login architecture</h2>
+    </div>
+    <form action="/auth" method="post" class="login_form">
+      <div class="input_field">
+        <label for="username">
+          <i class="fas fa-user"></i>
+        </label>
+        <input type="text" name="username" placeholder="Username" id="username" required />
+      </div>
+      <div class="input_field">
+        <label for="password">
+          <i class="fas fa-lock"></i>
+        </label>
+        <input type="password" name="password" placeholder="Password" id="password" required />
+      </div>
+      <input type="submit" value="Login" class="login_btn" />
+    </form>
+  </body>
+</html>
