@@ -2,6 +2,8 @@ import express from "express";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import session from "express-session";
+import bcrypt from "bcrypt";
+import crypto from "crypto";
 
 // Initialise express application
 const app = express();
@@ -26,6 +28,8 @@ const USERS = {
   kanna: "password2",
 };
 
+const sessions = new Map();
+const saltRounds = 10;
 // starting express in port
 app.listen(PORT, () => {
   console.log(`Server running in http://localhost:${PORT}`);
@@ -39,11 +43,18 @@ app.get("/", (req, res) => {
 // To check the login
 app.post("/login", (req, res) => {
   const password = req.body.password;
-  const username = req.body.username;
   const validAuth = USERS[req.body.username];
   if (validAuth) {
     if (password === validAuth) {
-      res.send("authed");
+      const sessionId = crypto.randomUUID();
+      sessions.set(sessionId, req.body.username);
+      res
+        .cookie("authSessionId", sessionId, {
+          secure: true,
+          httpOnly: true,
+          sameSite: "none",
+        })
+        .send("authed");
     } else {
       res.send("not authed");
     }
