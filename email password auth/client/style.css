@@ -20,6 +20,8 @@ body {
   margin-top: 32px;
 }
 
+/* Index Page styles */
+
 .login_form {
   display: flex;
   flex-direction: column;
@@ -73,3 +75,31 @@ input {
     padding-top: 6rem;
   }
 }
+
+/* End of index page styles */
+
+/* Start of homepage styles */
+
+p {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: medium;
+  text-align: center;
+  margin-top: 24px;
+  text-decoration: underline;
+  text-decoration-color: beige;
+  text-decoration-thickness: 2px;
+}
+
+.homepage_form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 48px;
+}
+
+.admin_btn {
+  padding: 4px 8px;
+}
+
+/* End of homepage styles */

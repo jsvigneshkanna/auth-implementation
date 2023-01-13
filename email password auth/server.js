@@ -43,18 +43,19 @@ app.get("/", (req, res) => {
 // To check the login
 app.post("/login", (req, res) => {
   const password = req.body.password;
-  const validAuth = USERS[req.body.username];
+  const username = req.body.username;
+  const validAuth = USERS[username];
   if (validAuth) {
     if (password === validAuth) {
       const sessionId = crypto.randomUUID();
-      sessions.set(sessionId, req.body.username);
+      sessions.set(sessionId, username);
       res
         .cookie("authSessionId", sessionId, {
           secure: true,
           httpOnly: true,
           sameSite: "none",
         })
-        .send("authed");
+        .redirect("/homepage");
     } else {
       res.send("not authed");
     }
@@ -63,6 +64,6 @@ app.post("/login", (req, res) => {
   }
 });
 
-app.get("/login", (req, res) => {
-  console.log("gsg: ", req.body);
+app.get("/homepage", (req, res) => {
+  res.sendFile(__dirname + "/client/homepage.html");
 });
