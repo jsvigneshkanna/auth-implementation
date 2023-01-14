@@ -63,7 +63,7 @@ app.post("/login", (req, res) => {
         })
         .redirect("/homepage");
     } else {
-      res.send("not authed");
+      res.redirect("/");
     }
   } else {
     res.send("no account");
