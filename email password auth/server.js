@@ -59,7 +59,7 @@ app.post("/login", (req, res) => {
         .cookie("authSessionId", sessionId, {
           secure: true,
           httpOnly: true,
-          sameSite: "none",
+          sameSite: true,
         })
         .redirect("/homepage");
     } else {
